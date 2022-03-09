@@ -1,0 +1,72 @@
+
+
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/imec/other/csainfra/bhatta53/public/software/install/conda/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/imec/other/csainfra/bhatta53/public/software/install/conda/etc/profile.d/conda.sh" ]; then
+        . "/imec/other/csainfra/bhatta53/public/software/install/conda/etc/profile.d/conda.sh"
+    else
+        export PATH="/imec/other/csainfra/bhatta53/public/software/install/conda/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
+
+# module related things go here! 
+# Suggested usage
+# For the first time, building cache would take time
+# rm -rf ~/.lmod*
+# module avail
+# This should be repeated everytime there is a change in module directories! 
+LUA_PREFIX=/imec/other/csainfra/projectdata/eb_setup/install/easybuild/software/Lua/5.1.4-8/
+export LUA_PATH="$LUA_PREFIX/share/lua/5.1/?.lua;$LUAROCKS_PREFIX/share/lua/5.1/?/init.lua;;"
+export LUA_CPATH="$LUA_PREFIX/lib/lua/5.1/?.so;;"
+#MODULEPATH should be changed here!!!
+export MODULEPATH="/imec/other/csainfra/bhatta53/public/software/modulefiles:/imec/other/csainfra/baapan42/public/modulefiles:/imec/other/measy/easybuild_common/modules/all"
+
+export LMOD_INIT="/imec/other/csainfra/projectdata/eb_setup/install/lmod/lmod/8.6.14/init/profile"
+export LMOD_CMD="/imec/other/csainfra/projectdata/eb_setup/install/lmod/lmod/8.6.14/libexec/lmod"
+export PATH="$LMOD_CMD:$PATH:"
+
+export EASYBUILD_UPDATE_MODULES_TOOL_CACHE=1
+export EB_PYTHON=/imec/other/csainfra/projectdata/eb_setup/ebenv/bin/python3
+export EASYBUILD_PREFIX=/imec/other/csainfra/projectdata/eb_setup/install/easybuild
+export EASYBUILD_MODULES_TOOL=Lmod
+export LOCAL_MODULES=${EASYBUILD_PREFIX}/modules/all
+export MODULEPATH=$LOCAL_MODULES:$MODULEPATH
+
+# all module related things should have been done before
+source $LMOD_INIT
+
+#add trash-cli 
+export PATH=$PATH:"/imec/users/bhatta53/.local/bin"
+alias rm='echo "This is not the command you are looking for."; false'
+
+export TRASH_DIR="~/csa/bhatta53/private/.Trash/"
+alias trash='trash --trash-dir=$TRASH_DIR'
+alias trash-list='trash-list --trash-dir=$TRASH_DIR'
+alias trash-empty='trash-empty --trash-dir=$TRASH_DIR'
+
+# source /imec/other/measy/public/module_switch
+# source /usr/share/lmod/lmod/init/lmod_bash_completions 
+# #module use $LOCAL_MODULES
+
+# module use /imec/other/csainfra/bhatta53/public/software/modulefiles
+# module use /imec/other/csainfra/baapan42/public/modulefiles
+
+# #To be deprecated soon 
+# module use /imec/users/bhatta53/nmporh/private/software/privatemodules
+# module use /imec/other/memseat/baapan42/public/csa_modulefiles/
+
+
+#module related alias
+alias ma='module avail'
+alias ml='module list'
+alias spider='module spider'
+alias rp='realpath'
+
