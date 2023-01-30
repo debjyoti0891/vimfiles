@@ -1,0 +1,16 @@
+
+
+
+
+
+#add trash-cli 
+export PATH=$PATH:"/imec/users/bhatta53/.local/bin"
+alias rm='echo "This is not the command you are looking for."; false'
+
+export TRASH_DIR="~/csa/bhatta53/private/.Trash/"
+alias trash='trash --trash-dir=$TRASH_DIR'
+alias trash-list='trash-list --trash-dir=$TRASH_DIR'
+alias trash-empty='trash-empty --trash-dir=$TRASH_DIR'
+
+#module related alias
+alias rp='realpath'
